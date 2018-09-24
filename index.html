@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Words counter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  </head>
+  <body>
+
+    <div class="row">
+      <br>
+        <div class="col s6 offset-s3">
+          <h4>Lyrics counter 🧐</h4>
+        </div>
+      <br>
+      <form class="col s6 offset-s3">
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="lyricarea" class="materialize-textarea" data-length="120"></textarea>
+            <label for="textarea2">Lyric</label>
+            <a class="waves-effect waves-light btn" onclick="coutWords()">START</a>
+          </div>
+        </div>
+      </form>
+      <br>
+        <div id="myDiv" class="col s6 offset-s3">
+
+        </div>
+      <br>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript">
+      function coutWords(theObject) {
+        let repeated = [];
+        let notRepeated = [];
+        let cout = {}
+        let lyric = document.getElementById("lyricarea").value;
+        let words = lyric.split(/[^a-zA-Z0-9']/);
+
+        words.forEach(function(element) {
+          if (element === "" || element === "x2") {}
+          else { repeated.push(element); }
+        });
+
+        for (var x = 0; x < repeated.length; x++) {
+          if (notRepeated.length === 0) {
+            notRepeated.push(repeated[x]);
+          } else {
+            if (notRepeated.indexOf(repeated[x]) < 0) {
+              notRepeated.push(repeated[x]);
+            }
+          }
+        }
+
+        document.getElementById("myDiv").innerHTML = `<div class="collection">
+                       <a href="#!" class="collection-item"><span class="new badge" data-badge-caption="words">${notRepeated.length}</span>Total</a>
+                       </div>`;
+      }
+    </script>
+  </body>
+</html>
