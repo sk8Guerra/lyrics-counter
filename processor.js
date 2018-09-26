@@ -6,7 +6,7 @@ function getLyric() {
   let words = noDiacritics.split(/[^a-zA-Z']/);
 
   words.forEach(function(element) {
-    if (element === "" || element === "x2") {}
+    if (element === "") {}
     else { repeated.push(element); }
   });
 
